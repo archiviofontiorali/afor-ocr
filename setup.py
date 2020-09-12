@@ -6,4 +6,5 @@ setup(
     packages=["ocr"],
     zip_safe=False,
     python_requires=">=3.8.0",
+    install_requires=["pytesseract"],
 )
