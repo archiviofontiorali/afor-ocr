@@ -21,3 +21,11 @@ def change_saturation(image: np.ndarray, alpha: float):
     hsv[..., 1] = hsv[..., 1] * alpha
     img = cv2.cvtColor(hsv, cv2.COLOR_HSV2RGB)
     return img
+
+
+def crop(image: np.ndarray, x0, y0, x1=None, y1=None, w=None, h=None):
+    if x1 is None and w is not None:
+        x1 = x0 + w
+    if y1 is None and h is not None:
+        y1 = y0 + h
+    return image[y0:y1, x0:x1]
