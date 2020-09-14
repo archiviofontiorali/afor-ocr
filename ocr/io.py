@@ -18,6 +18,8 @@ def is_color(image: np.ndarray):
 def load_image(path: str) -> np.ndarray:
     """Read an image in RGB mode as numpy array."""
     image = cv2.imread(str(path), cv2.IMREAD_COLOR)
+    if image is None:
+        raise FileNotFoundError(path)
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     return image
 
