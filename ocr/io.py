@@ -1,5 +1,8 @@
-import numpy as np
+from pathlib import Path
+from typing import Union
+
 import cv2
+import numpy as np
 
 
 def aspect_ratio(image: np.ndarray) -> float:
@@ -15,7 +18,7 @@ def is_color(image: np.ndarray):
     return image.ndim == 3
 
 
-def load_image(path: str) -> np.ndarray:
+def load_image(path: Union[str, Path]) -> np.ndarray:
     """Read an image in RGB mode as numpy array."""
     image = cv2.imread(str(path), cv2.IMREAD_COLOR)
     if image is None:
