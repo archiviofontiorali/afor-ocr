@@ -7,7 +7,7 @@ clean:
 
 .PHONY: venv
 venv: clean
-	virtualenv $(VENV)
+	virtualenv -p /usr/bin/python3 $(VENV)
 
 .PHONY: bootstrap
 bootstrap: venv
