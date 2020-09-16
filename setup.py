@@ -6,5 +6,5 @@ setup(
     packages=["ocr"],
     zip_safe=False,
     python_requires=">=3.7.0",
-    install_requires=["pytesseract"],
+    install_requires=["pytesseract", "opencv-python-headless", "imutils"],
 )
