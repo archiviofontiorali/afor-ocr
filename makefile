@@ -7,7 +7,7 @@ clean:
 
 .PHONY: venv
 venv: clean
-	python3 -m venv $(VENV)
+	virtualenv $(VENV)
 
 .PHONY: bootstrap
 bootstrap: venv
@@ -18,7 +18,7 @@ bootstrap: venv
 .PHONY: bootstrap-dev
 bootstrap-dev: bootstrap
 	$(VENV)/bin/pip3 install pytest
-	
+
 .PHONY: test
 test:
 	@$(VENV)/bin/pytest tests
