@@ -8,11 +8,11 @@ clean:
 .PHONY: venv
 venv: clean
 	virtualenv -p /usr/bin/python3 $(VENV)
+	$(VENV)/bin/pip3 install --upgrade pip
 
 .PHONY: bootstrap
 bootstrap: venv
-	$(VENV)/bin/pip3 install --upgrade pip
-	$(VENV)/bin/pip3 install -U -r requirements.txt
+	$(VENV)/bin/pip3 install -U --prefer-binary -r requirements.txt
 	$(VENV)/bin/pip3 install -e .
 
 .PHONY: bootstrap-dev
