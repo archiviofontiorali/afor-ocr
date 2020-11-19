@@ -1,28 +1,42 @@
-VENV=.venv
-PACKAGE=ocr
+PYTHON_VERSION=3.8
 
+SHELL=/bin/bash
+PACKAGE=ocr
+VENV=.venv
+
+
+PIP=$(VENV)/bin/pip3
+
+bold := $(shell tput bold)
+sgr0 := $(shell tput sgr0)
+
+
+.PHONY: bootstrap
+bootstrap: venv develop
+
+	
 .PHONY: clean
 clean:
-	@echo "════ Clean up old virtualenv and cache ════"
+	@echo "$(boid)Clean up old virtualenv and cache$(sgr0)"
 	rm -rf $(VENV) $(PACKAGE).egg-info
 
 .PHONY: venv
 venv: clean
-	@echo "════ Create virtualenv ════════════════════"	
-	virtualenv -p /usr/bin/python3 $(VENV)
-	$(VENV)/bin/pip3 install --upgrade pip
+	@echo "$(bold)Create virtualenv$(sgr0)"	
+	virtualenv -p /usr/bin/python$(PYTHON_VERSION) $(VENV)
+	$(PIP) install --upgrade pip setuptools
 
-.PHONY: bootstrap
-bootstrap: venv
-	@echo "════ Install dependencies and package  ════"
-	$(VENV)/bin/pip3 install -U --prefer-binary --use-feature=2020-resolver -r requirements.txt
-	$(VENV)/bin/pip3 install -e .
-
-.PHONY: bootstrap-dev
-bootstrap-dev: bootstrap
-	@echo "════ Install dev utilities ════════════════"
-	$(VENV)/bin/pip3 install pytest
-
+.PHONY: develop
+develop:
+	@echo "$(bold)Install and update develop requirements$(sgr0)"
+	$(PIP) install --upgrade .[develop]
+	$(PIP) install --upgrade .[testing]
+	$(PIP) install -e .	
+	
 .PHONY: test
-test:
-	@$(VENV)/bin/pytest tests
+test: 
+	$(VENV)/bin/python -m pytest -p no:warnings
+
+requirements.txt:
+	@echo "$(bold)Freeze dependencies$(sgr0)"
+	$(PIP) freeze > $@
