@@ -2,6 +2,7 @@ import holoviews as hv
 import numpy as np
 
 import ocr.io
+from ocr.types import Image
 
 try:
     import holoviews.operation.datashader
@@ -11,7 +12,7 @@ else:
     RASTER_AVAILABLE = True
 
 
-def hv_image(image: np.ndarray, raster: bool = True, with_border=False):
+def hv_image(image: Image, raster: bool = True, with_border=False):
     """Create an image bokeh plot with right shapes and aspect ratio."""
     width, height = image.shape[1], image.shape[0]
     bounds = (0, 0, width, height)

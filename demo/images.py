@@ -6,7 +6,7 @@ import numpy as np
 
 import ocr.io
 
-from .types import Image, Path
+from ocr.types import Image, Path
 
 
 def load_from_folder(path: Path) -> List[Tuple[str, Image]]:
