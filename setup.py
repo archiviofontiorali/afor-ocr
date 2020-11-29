@@ -15,4 +15,4 @@ except pkg_resources.VersionConflict:
 
 
 if __name__ == "__main__":
-    setuptools.setup(packages=["ocr"])
+    setuptools.setup(packages=["demo", "ocr"])

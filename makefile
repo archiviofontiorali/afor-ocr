@@ -30,8 +30,13 @@ develop:
 	@echo "$(bold)Install and update develop requirements$(sgr0)"
 	$(PIP) install --upgrade .[develop]
 	$(PIP) install --upgrade .[testing]
+	$(PIP) install --upgrade .[demo]
 	$(PIP) install -e .	
-	
+
+.PHONY: demo
+demo:
+	@$(VENV)/bin/panel serve --dev --show demo
+
 .PHONY: test
 test: 
 	$(VENV)/bin/python -m pytest -p no:warnings
