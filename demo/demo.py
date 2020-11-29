@@ -11,8 +11,8 @@ import ocr.io
 import ocr.preprocessing
 import ocr.tesseract
 
-from .viz import hv_image
 from .hooks import disable_logo
+from .viz import hv_image
 
 
 class DemoApp(param.Parameterized):

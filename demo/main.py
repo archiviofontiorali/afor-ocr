@@ -1,9 +1,8 @@
 import holoviews as hv
 import panel as pn
 
-from .images import load_from_folder, create_sample_image
-
 from .demo import DemoApp
+from .images import create_sample_image, load_from_folder
 
 # Initialize Holoviews and Panel
 hv.extension("bokeh")

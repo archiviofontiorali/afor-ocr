@@ -1,5 +1,6 @@
 import holoviews as hv
 import numpy as np
+
 import ocr.io
 
 try:
