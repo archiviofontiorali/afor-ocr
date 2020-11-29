@@ -12,10 +12,7 @@ import ocr.preprocessing
 import ocr.tesseract
 
 from .viz import hv_image
-
-
-def disable_logo(plot, _element):
-    plot.state.toolbar.logo = None
+from .hooks import disable_logo
 
 
 class DemoApp(param.Parameterized):
