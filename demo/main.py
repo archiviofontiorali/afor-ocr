@@ -1,7 +1,6 @@
 import pathlib
 from collections import OrderedDict
-from typing import List
-from typing import Tuple
+from typing import List, Tuple
 
 import holoviews as hv
 import holoviews.streams
