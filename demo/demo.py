@@ -18,7 +18,7 @@ from .viz import hv_image
 class DemoApp(param.Parameterized):
     select_image = param.ObjectSelector(objects=[None])
 
-    btn_convert = param.Action(lambda e: e.ocr_convert(), label="OCR")
+    btn_extract = param.Action(lambda e: e.ocr_extract(), label="OCR")
     btn_reset = param.Action(lambda e: e.reset(), label="Reset")
 
     brightness = param.Number(1.0, bounds=(0.0, 1.0))
@@ -38,7 +38,7 @@ class DemoApp(param.Parameterized):
         self.boxes = hv.Rectangles([])
         self.box_stream = hv.streams.BoxEdit(source=self.boxes, num_objects=1)
 
-        self.converter = ocr.tesseract.Tesseract(lang="ita+ita_old")
+        self.extractor = ocr.tesseract.Tesseract(lang="ita+ita_old")
         self._text = ""
 
     @property
@@ -67,12 +67,12 @@ class DemoApp(param.Parameterized):
         self.saturation = self.param["saturation"].default
         self.param.trigger("btn_reset")
 
-    def ocr_convert(self):
+    def ocr_extract(self):
         image = ocr.preprocessing.crop(self.image, *self.box)
-        text = self.converter.convert(image)
+        text = self.extractor.extract(image)
         text = text.strip().replace("\n", " ")
         self._text = text if text else "No text found"
-        self.param.trigger("btn_convert")
+        self.param.trigger("btn_extract")
 
     @param.depends("angle", "orientation", "brightness", "saturation", watch=True)
     def update_image(self):
@@ -83,7 +83,7 @@ class DemoApp(param.Parameterized):
         image = ocr.preprocessing.change_saturation(image, self.saturation)
         self.image = image
 
-    @param.depends("btn_convert", "btn_reset", "image")
+    @param.depends("btn_extract", "btn_reset", "image")
     def view(self):
         plot = hv_image(self.image, with_border=True) * self.boxes
         plot = plot.opts(plot=dict(hooks=[disable_logo]))

@@ -12,5 +12,5 @@ class Tesseract:
             # pandas_config=None,
         )
 
-    def convert(self, image) -> str:
+    def extract(self, image) -> str:
         return pytesseract.image_to_string(image, **self.config)
