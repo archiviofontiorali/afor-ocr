@@ -26,3 +26,6 @@ $ make bootstrap
 ```shell script
 $ make demo
 ```
+
+### How to add images
+Move some `.png` or `.jpg` images in `images` folder and relaunch app.
