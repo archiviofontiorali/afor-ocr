@@ -1,9 +1,8 @@
 PYTHON_VERSION=3.8
 
-SHELL=/bin/bash
 PACKAGE=ocr
+SHELL=/bin/bash
 VENV=.venv
-
 
 PIP=$(VENV)/bin/pip3
 
@@ -18,7 +17,7 @@ bootstrap: venv develop
 .PHONY: clean
 clean:
 	@echo "$(boid)Clean up old virtualenv and cache$(sgr0)"
-	rm -rf $(VENV) $(PACKAGE).egg-info
+	rm -rf $(VENV) $(PACKAGE).egg-info .pytest_cache
 
 .PHONY: venv
 venv: clean
@@ -37,6 +36,7 @@ develop:
 test: 
 	$(VENV)/bin/python -m pytest -p no:warnings
 
+.PHONY: requirements.txt
 requirements.txt:
 	@echo "$(bold)Freeze dependencies$(sgr0)"
 	$(PIP) freeze > $@
