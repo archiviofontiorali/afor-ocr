@@ -1,4 +1,4 @@
--e git+git@github.com:giobber/afor-ocr.git@bfd16225300bd91945d33007446883a1d6143c60#egg=afor_ocr
+-e git+git@github.com:giobber/afor-ocr.git@4ecc675c919ea3e18f27feb4e1d5c37081037c87#egg=afor_ocr
 appdirs==1.4.4
 attrs==20.3.0
 black==20.8b1
@@ -23,6 +23,7 @@ isort==5.6.4
 Jinja2==2.11.2
 llvmlite==0.34.0
 locket==0.2.0
+loguru==0.5.3
 Markdown==3.3.3
 MarkupSafe==1.1.1
 mccabe==0.6.1
