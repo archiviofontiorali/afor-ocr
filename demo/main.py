@@ -24,5 +24,5 @@ images.append(create_sample_image())
 demo = DemoApp(images)
 
 # Initialize Panel app
-app = pn.Row(demo.view, width=1024, height=768)
+app = pn.Row(demo.view, width=1280, height=1080)
 app.servable()
