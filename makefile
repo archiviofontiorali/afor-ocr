@@ -31,7 +31,13 @@ develop:
 	$(PIP) install --upgrade .[develop]
 	$(PIP) install --upgrade .[testing]
 	$(PIP) install --upgrade .[demo]
-	$(PIP) install -e .	
+	$(PIP) install -e .
+
+.PHONY: datashader
+datashader:
+	# Not working on python 3.9 (see https://github.com/numba/numba/issues/6345)
+	@echo "$(bold)Add support for datashader plugin$(sgr0)"
+	$(PIP) install --upgrade --prefer-binary .[datashader]
 
 .PHONY: demo
 demo:
