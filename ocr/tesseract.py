@@ -6,14 +6,26 @@ from ocr.types import delegates
 
 
 class Word:
+    x0: int
+    y0: int
+    w: int
+    h: int
+    confidence: float
+    text: str
+
     def __init__(self, x0, y0, w, h, confidence, text: str):
         self.x0, self.y0 = int(x0), int(y0)
         self.w, self.h = int(w), int(h)
         self.confidence = confidence
         self.text = text
 
-        self.x1 = self.x0 + self.w
-        self.y1 = self.y0 + self.h
+    @property
+    def x1(self) -> int:
+        return self.x0 + self.w
+
+    @property
+    def y1(self) -> int:
+        return self.y0 + self.h
 
     def __repr__(self):
         return (
