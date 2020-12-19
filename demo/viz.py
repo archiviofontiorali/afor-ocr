@@ -1,5 +1,4 @@
 import holoviews as hv
-import numpy as np
 
 import ocr.io
 from ocr.types import Image

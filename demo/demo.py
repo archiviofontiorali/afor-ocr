@@ -26,8 +26,8 @@ class DemoApp(param.Parameterized):
     angle = param.Integer(0, bounds=(-45, 45))
     orientation = param.Selector(objects=[0, -90, +90, 180])
 
-    def __init__(self, images: List[Tuple[str, np.ndarray]]):
-        super().__init__()
+    def __init__(self, images: List[Tuple[str, np.ndarray]], **kwargs):
+        super().__init__(**kwargs)
         self._images = OrderedDict(images)
         self.param["select_image"].objects = self._images.keys()
         self.param["select_image"].default = images[0][0]

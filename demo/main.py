@@ -21,7 +21,7 @@ images.extend(load_from_folder("images"))
 images.append(create_sample_image())
 
 # Create demo app
-demo = DemoApp(images)
+demo = DemoApp(images, name="Demo")
 
 # Initialize Panel app
 app = pn.Row(demo.view, width=1280, height=1080)
