@@ -1,6 +1,7 @@
 import holoviews as hv
 import panel as pn
 
+from . import __version__
 from .demo import DemoApp
 from .images import create_sample_image, load_from_folder
 
@@ -14,6 +15,9 @@ hv.opts.defaults(
     hv.opts.Rectangles(active_tools=["box_edit"], fill_alpha=0.5),
 )
 pn.extension()
+
+# Print version
+print("Package version:", __version__)
 
 # Load images
 images = []
