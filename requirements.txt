@@ -1,4 +1,4 @@
--e git+git@github.com:archiviofontiorali/afor-ocr.git@bb9d65b370dd7102c7ef4365c2770881a3500d34#egg=afor_ocr
+-e git+git@github.com:archiviofontiorali/afor-ocr.git@f05318972094c19e16fa7b825c4bb08dafe44f83#egg=afor_ocr
 appdirs==1.4.4
 attrs==20.3.0
 black==20.8b1
